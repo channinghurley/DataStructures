@@ -5,11 +5,13 @@
 
     Leaf (extends BinaryTree): Any empty leaf node of a tree, i.e. a node with no data and no children.
 
-    Node (extends BinaryTree): A node in a binary tree, containing data, a left child and a right child (each of which could be leaves).
+    Node (extends BinaryTree): A node in a binary tree, containing data, a left child, and a right child (each of which could be themselves nodes or leaves).
 
     TODO:
 
 """
+
+# from Trees.BinaryTreeUtils import preorder_dfs
 
 
 class BinaryTree:
@@ -17,10 +19,11 @@ class BinaryTree:
 
     Notes:
         * References to any data, left children, or right children must be in refernece to a specific node, not the entire tree.
+        * root attribute serves as the main accessor/entry point to the tree's data.
     """
 
     def __init__(self, root=None):
-        """Initialize the tree to be empty by default. The tree can also be initialized to a node with data and children. Note: if root is initialized to a node, the root node necessarily extends the BinaryTree class.
+        """Initialize the tree to be empty by default. The tree can also be initialized to a node with data and children. Note: if root is initialized to a node, the root node necessarily extends the BinaryTree class. Root serves as the main accessor of the tree's contents.
         """
         assert root is None or isinstance(root, BinaryTree)
 
@@ -31,18 +34,32 @@ class BinaryTree:
         """TODO: recursively print all nodes/leaves"""
         return str(self.root)
 
+    def is_empty(self):
+        """Return true if the tree is empty, i.e. contains no nodes."""
+        return isinstance(self, Leaf) or self.root is None
+
     def set_parent(self, parent):
         """Assign a refernce to the root node's parent"""
         self.has_parent = True
         self.parent = parent
 
-    def isright(self):
+    def set_all_parents(self):
+        """Ensure all nodes in this tree have a reference to their parent node"""
+
+        def connect(n):
+            n.left.set_parent(n)
+            n.right.set_parent(n)
+
+        from Trees.BinaryTreeUtils import preorder_dfs
+        preorder_dfs(self, connect)
+
+    def is_right(self):
         """Return True iff the tree is a right child. Note: parent must be set"""
         return self is self.parent.right if self.has_parent else False
 
-    def isleft(self):
+    def is_left(self):
         """Return True iff the tree is a left child. Note: parent must be set"""
-        return not self.isright() if self.has_parent else False
+        return not self.is_right() if self.has_parent else False
 
 
 class Leaf(BinaryTree):
