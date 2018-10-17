@@ -13,7 +13,7 @@
 
 
 class BinaryTree:
-    """Top-level class to serve as parent of BinaryTree and Empty to maintain the logic that a node consists of data, a left child, and a right child, Leaf is a tree with no data and no children, and that all subtrees within a tree can be themselves considered a tree. This design allows for convenience when implementing recursive methods to operate on trees. This class performs all top-level operations on the overall tree, such as insertion, deletion, and searching.
+    """Top-level class to serve as parent of BinaryTree and Leaf to maintain the logic that a node consists of data, a left child, and a right child, Leaf is a tree with no data and no children, and that all subtrees within a tree can be themselves considered a tree. This design allows for convenience when implementing recursive methods to operate on trees. This class performs all top-level operations on the overall tree, such as insertion, deletion, and searching.
     """
 
     def __init__(self, root=None):
