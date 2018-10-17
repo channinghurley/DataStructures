@@ -1,6 +1,7 @@
 """Test file for tinkering"""
 
 from Trees.BinaryTree import *
+from Trees.BinaryTreeUtils import preorder_dfs
 
 # t = Node(1)
 # print(isinstance(t, BinaryTree))
@@ -33,20 +34,26 @@ def pretty_print(n):
     helper(n)
 
 
-tree = BinaryTree(root=Node())
-root = tree.root
-root.data = 2
+# tree = BinaryTree(root=Node())
+# root = tree.root
+# root.data = 2
+#
+# left = Node(data=1)
+# right = Node(data=3)
+# root.add_left(left)
+# root.add_right(right)
+# left.set_parent(root)
+# right.set_parent(root)
+#
+# print(tree)
+# print(root.isright())
+# print(root.isleft())
+# print(left.isleft())
+# print(right.isright())
+# pretty_print(tree)
 
-left = Node(data=1)
-right = Node(data=3)
-root.add_left(left)
-root.add_right(right)
-left.set_parent(root)
-right.set_parent(root)
+tree = BinaryTree(root=Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(Leaf(), "G", Node(Node(data="H"), "I", Leaf()))))
 
-print(tree)
-print(root.isright())
-print(root.isleft())
-print(left.isleft())
-print(right.isright())
 pretty_print(tree)
+print()
+preorder_dfs(tree, process=print)
