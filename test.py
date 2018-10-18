@@ -5,6 +5,9 @@ from Trees.BinaryTreeUtils import *
 
 tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
 
+preorder_dfs(tree, lambda n: print(n.data, end=" "), 0)
+print()
+
 # print(tree)
 # print(tree.max_depth())
 #
@@ -12,26 +15,26 @@ tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E")))
 # print(tree)
 # print(tree.max_depth())
 #
-# t2 = Node(Node(None, None, None), 1, Node(None, None, None))
+# # t2 = Node(Node(None, None, None), 1, Node(None, None, None))
+# #
+# # print(t2)
 #
-# print(t2)
-
-def view_parents(n):
-    pd = n.parent
-    if n.parent:
-        pd = n.parent.data
-    s = "{}: Parent = {}".format(n.data, pd, sep=" ")
-    print(s)
+# def view_parents(n):
+#     pd = n.parent
+#     if n.parent:
+#         pd = n.parent.data
+#     s = "{}: Parent = {}".format(n.data, pd, sep=" ")
+#     print(s)
 
 # in_order_dfs(tree, view_parents)
 
-print(tree == tree)
-n1 = Node(Node(Node(data=2), 4, Node()), 1, Node(data=3))
-n2 = Node(Node(Node(data=2), 4, Node()), 1, Node(data=3))
-print(n1)
-print(n1==n2)
-print(n1!=n2)
-print(n2 in n1)
+# print(tree == tree)
+# n1 = Node(Node(Node(data=2), 4, Node()), 1, Node(data=3))
+# n2 = Node(Node(Node(data=2), 4, Node()), 1, Node(data=3))
+# print(n1)
+# print(n1==n2)
+# print(n1!=n2)
+# print(n2 in n1)
 
 # in_order_dfs(tree, view_parents)
 # Output:

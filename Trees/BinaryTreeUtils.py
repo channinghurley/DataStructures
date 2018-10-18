@@ -4,7 +4,7 @@
     TODO:
     * update variable names
     * verify recent code changes
-    * add accumulators
+    * add accumulator
 """
 
 from Trees.BinaryTree import *
@@ -69,3 +69,12 @@ def postorder_dfs(n: Node, process=None):
         if process:
             assert callable(process), "process must be callable"
             process(n)
+
+
+def dfs_acc(n: Node, process=None, acc=None):
+    """Execute a recursive in-order depth-first traversal of a binary tree, calling the optional function "process" on each node and maintaining an accumulator "acc" to track data throughout recursion
+    """
+
+    assert isinstance(n, Node) or n is None, "Argument must be of type Node or None"
+
+    return #TODO

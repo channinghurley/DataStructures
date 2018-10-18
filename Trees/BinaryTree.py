@@ -2,6 +2,7 @@
 
 
     TODO:
+    * more detailed error messages
     * update docstring
     * verify recent changes
     * size
@@ -40,7 +41,7 @@ class Node():
 
     def __bool__(self):
         """Return False iff the node is empty, i.e. has no data and no children."""
-        return self != Node(None, None, None)
+        return self != Node(None, None, None) or self is None
 
     def __eq__(self, other):
         """Return True iff all attributes of the two nodes are equal."""
@@ -52,7 +53,7 @@ class Node():
         return not self == other
 
     def __contains__(self, item): # TODO
-        """Return True if item is in self, i.e. return True if item is a subnode of the root node (self). If item is not a Node, return True if the data of the root or any of it's subnodes is item."""
+        """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self). If item is not a Node, return True if the data of the root or any of it's subnodes is item."""
         return False
 
     def is_right(self):
@@ -71,7 +72,6 @@ class Node():
     def set_right(self, r):
         """Add the node's right child, overridding any existing right child and ensuring the right child is of type Node.
         """
-
         assert isinstance(r, Node) or r is None, "Child node must be of type Node or None, instead has type {}".format(type(r))
         self.right = r
         if r: r.set_parent(self) # Do not set the parent of NonTypes
@@ -79,13 +79,14 @@ class Node():
     def set_left(self, l):
         """Add the node's left child, overridding any existing left child and ensuring the left child is of type Node.
         """
-
         assert isinstance(l, Node) or l is None, "Child node must be of type Node or None, instead has type {}".format(type(l))
         self.left = l
         if l: l.set_parent(self) # Do not set the parent of NonTypes
 
     def max_depth(self, depth=-1):
-        """Return the depth of the node that is furthest from the root (self), where depth is the number of "edges" from the root to a node. Return zero if the tree is empty."""
+        """Return the depth of the node that is furthest from the root (self), where depth is the number of "edges" from the root to a node. Return zero if the tree is empty.
+        TODO: move to utils for a more functional approach
+        """
 
         l, r = self.left, self.right
         assert isinstance(l, Node) or not l, "Left child must be Node or None"
