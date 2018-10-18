@@ -1,70 +1,71 @@
 """Author: Channing J. Hurley
-    Module: BinaryTreeUtils -- Defines methods that operate on binary trees, including standard binary tree traversal algorithms.
+    Module: BinaryTreeUtils -- Defines methods that operate on binary trees, including standard binary n traversal algorithms.
 
     TODO:
-    * update variable names (tree)
+    * update variable names
     * verify recent code changes
+    * add accumulators
 """
 
 from Trees.BinaryTree import *
 
-def bfs(tree: Node, process=None):
-    """Execute an iterative breadth-first (level-order) traversal on a binary tree, calling the function "process" on each node.
+def bfs(n: Node, process=None):
+    """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from node n, calling the function "process" on each node.
     """
 
     assert callable(process) or not process, "process must be callable"
-    assert isinstance(tree, Node), "Argument must be of type Node or None"
+    assert isinstance(n, Node), "Argument must be of type Node or None"
 
-    if tree:
+    if n:
         queue = []
-        queue.append(tree)
+        queue.append(n)
         while queue:
-            node = queue.pop(0)
+            n = queue.pop(0)
             if process:
-                process(node)
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
+                process(n)
+            if n.left:
+                queue.append(n.left)
+            if n.right:
+                queue.append(n.right)
 
 
-def preorder_dfs(tree: Node, process=None):
-    """Execute a recursive pre-order depth-first traversal on a binary tree, calling the function "process" on each node.
+def preorder_dfs(n: Node, process=None):
+    """Execute a recursive pre-order depth-first traversal on a binary tree starting at node n, calling the function "process" on each node.
     """
 
-    assert isinstance(tree, Node) or tree is None, "Argument must be of type Node or None"
+    assert isinstance(n, Node) or n is None, "Argument must be of type Node or None"
 
-    if tree:
+    if n:
         if process:
             assert callable(process), "process must be callable"
-            process(tree)
-        preorder_dfs(tree.left, process)
-        preorder_dfs(tree.right, process)
+            process(n)
+        preorder_dfs(n.left, process)
+        preorder_dfs(n.right, process)
 
 
-def in_order_dfs(tree: Node, process=None):
-    """Execute a recursive in-order traversal on a binary tree, calling the function "process" on each node.
+def in_order_dfs(n: Node, process=None):
+    """Execute a recursive in-order traversal on a binary tree starting at node n, calling the function "process" on each node.
     """
 
-    assert isinstance(tree, Node) or tree is None, "Argument must be of type Node or None"
+    assert isinstance(n, Node) or n is None, "Argument must be of type Node or None"
 
-    if tree:
-        in_order_dfs(tree.left, process)
+    if n:
+        in_order_dfs(n.left, process)
         if process:
             assert callable(process), "process must be callable"
-            process(tree)
-        in_order_dfs(tree.right, process)
+            process(n)
+        in_order_dfs(n.right, process)
 
 
-def postorder_dfs(tree: Node, process=None):
-    """Execute a recursive post-order traversal on a binary tree, calling the function "process" on each node.
+def postorder_dfs(n: Node, process=None):
+    """Execute a recursive post-order traversal on a binary tree starting at node n, calling the function "process" on each node.
     """
 
-    assert isinstance(tree, Node) or tree is None, "Argument must be of type Node or None"
+    assert isinstance(n, Node) or n is None, "Argument must be of type Node or None"
 
-    if tree:
-        postorder_dfs(tree.left, process)
-        postorder_dfs(tree.right, process)
+    if n:
+        postorder_dfs(n.left, process)
+        postorder_dfs(n.right, process)
         if process:
             assert callable(process), "process must be callable"
-            process(tree)
+            process(n)

@@ -15,35 +15,23 @@ tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E")))
 # t2 = Node(Node(None, None, None), 1, Node(None, None, None))
 #
 # print(t2)
-#
-# def view_parents(n):
-#     pd = n.parent
-#     if n.parent:
-#         pd = n.parent.data
-#     s = "{}: Parent = {}".format(n.data, pd, sep=" ")
-#     print(s)
 
-n1 = Node(Node(data=2), 1, Node(data=3))
-print(n1)
-print(n1.left.parent)
-print(n1.right.parent)
-print(n1.is_right())
-
-
+def view_parents(n):
+    pd = n.parent
+    if n.parent:
+        pd = n.parent.data
+    s = "{}: Parent = {}".format(n.data, pd, sep=" ")
+    print(s)
 
 # in_order_dfs(tree, view_parents)
-# Output
-# A: Parent = None
-# B: Parent = None
-# C: Parent = None
-# D: Parent = None
-# E: Parent = None
-# F: Parent = None
-# G: Parent = None
-# H: Parent = None
-# I: Parent = None
 
-# tree.set_all_parents()
+print(tree == tree)
+n1 = Node(Node(Node(data=2), 4, Node()), 1, Node(data=3))
+n2 = Node(Node(Node(data=2), 4, Node()), 1, Node(data=3))
+print(n1)
+print(n1==n2)
+print(n1!=n2)
+print(n2 in n1)
 
 # in_order_dfs(tree, view_parents)
 # Output:
