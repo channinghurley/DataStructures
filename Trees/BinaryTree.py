@@ -2,17 +2,23 @@
 
 
     TODO:
-    * update docstrings after removal of BinaryTree class
+    * update docstring
     * verify recent changes
-    * remove is_empty function
-    * insert
+    * size
+    * depth
+    * get root
+    * in
+    * iterative search
+    * recursive search
+    * insert / __add__
     * delete
     * is_sorted
+    * chage __str__ impl to __repr__?
 """
 
 
 class Node():
-    """A node in a binary tree containing the node data, a right child, a left child, and an optional "pointer" to the parent node. Extends BinaryTree to allow for convenience when implementing recursive methods that operate on Trees and to maintain the logic that all subtrees within a tree can be themselves considered a tree.
+    """A node in a binary tree containing the node data, a right child, a left child, and an optional reference to the parent node. Extends BinaryTree to allow for convenience when implementing recursive methods that operate on Trees and to maintain the logic that all subtrees within a tree can be themselves considered a tree.
     """
 
     def __init__(
@@ -48,14 +54,9 @@ class Node():
         assert isinstance(l, Node), "Child node must be Node or Leaf"
         self.left = l
 
-    ''' TODO: remove
-    def is_empty(self):
-        """Return true if the tree is empty, i.e. contains no nodes and no data."""
-        return self.left is None and self.right is None
-    '''
-
     def set_parent(self, parent):
         """Assign a refernece to the node's parent"""
+        assert isinstance(parent, Node), "parent must be of type Node"
         self.parent = parent
 
     def set_all_parents(self):
@@ -69,3 +70,7 @@ class Node():
 
         from Trees.BinaryTreeUtils import preorder_dfs
         preorder_dfs(self, connect)
+
+    def size():
+        """Return the number of nodes in the tree"""
+        pass

@@ -1,24 +1,63 @@
 """Test file for tinkering"""
 
-from Trees.BinaryTree import *
+from Trees.BinaryTree import Node
 from Trees.BinaryTreeUtils import *
 
-n = Node(Node(data=1), 2, Node(data=3))
-preorder_dfs(n)
+tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
 
-print(n.data)
-print(n.left)
-print(n.right)
-print(n.parent)
-print(n.left.parent)
-print(n.right.parent)
-n.set_all_parents()
-print(n.parent)
-print(n.left.parent)
-print(n.right.parent)
-print(n.left.parent is n.right.parent)
-print(n.left.is_left())
-print(n.right.is_right())
+print(tree)
+
+def view_parents(n):
+    pd = n.parent
+    if n.parent:
+        pd = n.parent.data
+    s = "{}: Parent = {}".format(n.data, pd, sep=" ")
+    print(s)
+
+in_order_dfs(tree, view_parents)
+# Output
+# A: Parent = None
+# B: Parent = None
+# C: Parent = None
+# D: Parent = None
+# E: Parent = None
+# F: Parent = None
+# G: Parent = None
+# H: Parent = None
+# I: Parent = None
+
+tree.set_all_parents()
+
+in_order_dfs(tree, view_parents)
+# Output:
+# A: Parent = B
+# B: Parent = F
+# C: Parent = D
+# D: Parent = B
+# E: Parent = D
+# F: Parent = None
+# G: Parent = F
+# H: Parent = I
+# I: Parent = G
+
+
+
+# n = Node(Node(data=1), 2, Node(data=3))
+# preorder_dfs(n)
+#
+# print(n.data)
+# print(n.left)
+# print(n.right)
+# print(n.parent)
+# print(n.left.parent)
+# print(n.right.parent)
+# n.set_all_parents()
+# print(n.parent)
+# print(n.left.parent)
+# print(n.right.parent)
+# print(n.left.parent is n.right.parent)
+# print(n.left.is_left())
+# print(n.right.is_right())
 
 
 
@@ -65,7 +104,7 @@ print(n.right.is_right())
 # print(right.isright())
 # pretty_print(tree)
 
-tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
+
 
 '''
 
