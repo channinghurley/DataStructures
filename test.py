@@ -1,7 +1,26 @@
 """Test file for tinkering"""
 
-from Trees.BinaryTree import *
+from Trees.Node import *
 from Trees.BinaryTreeUtils import *
+
+n = Node(Node(data=1), 2, Node(data=3))
+# preorder_dfs(n)
+
+print(n.data)
+print(n.left)
+print(n.right)
+print(n.parent)
+print(n.left.parent)
+print(n.right.parent)
+n.set_all_parents()
+print(n.parent)
+print(n.left.parent)
+print(n.right.parent)
+print(n.left.parent is n.right.parent)
+print(n.left.is_left())
+print(n.right.is_right())
+
+
 
 # t = Node(1)
 # print(isinstance(t, BinaryTree))
@@ -51,7 +70,7 @@ from Trees.BinaryTreeUtils import *
 # print(right.isright())
 # pretty_print(tree)
 
-
+'''
 tree = BinaryTree(root=Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(Leaf(), "G", Node(Node(data="H"), "I", Leaf()))))
 
 bfs(tree, lambda n: print(n.data, "has parent: ", n.has_parent))
@@ -65,7 +84,7 @@ bfs(tree, lambda n: print(n.data, "has parent: ", n.has_parent))
 tree.set_all_parents()
 
 bfs(tree, lambda n: print(n.data, "Parent: ", n.parent.data if n.has_parent else None))
-
+'''
 # print("Pre-order: ", end="")
 # preorder_dfs(tree, l)
 # print()
