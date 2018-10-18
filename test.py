@@ -5,16 +5,33 @@ from Trees.BinaryTreeUtils import *
 
 tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
 
-print(tree)
+# print(tree)
+# print(tree.max_depth())
+#
+# tree = Node(Node(), 1, Node())
+# print(tree)
+# print(tree.max_depth())
+#
+# t2 = Node(Node(None, None, None), 1, Node(None, None, None))
+#
+# print(t2)
+#
+# def view_parents(n):
+#     pd = n.parent
+#     if n.parent:
+#         pd = n.parent.data
+#     s = "{}: Parent = {}".format(n.data, pd, sep=" ")
+#     print(s)
 
-def view_parents(n):
-    pd = n.parent
-    if n.parent:
-        pd = n.parent.data
-    s = "{}: Parent = {}".format(n.data, pd, sep=" ")
-    print(s)
+n1 = Node(Node(data=2), 1, Node(data=3))
+print(n1)
+print(n1.left.parent)
+print(n1.right.parent)
+print(n1.is_right())
 
-in_order_dfs(tree, view_parents)
+
+
+# in_order_dfs(tree, view_parents)
 # Output
 # A: Parent = None
 # B: Parent = None
@@ -26,9 +43,9 @@ in_order_dfs(tree, view_parents)
 # H: Parent = None
 # I: Parent = None
 
-tree.set_all_parents()
+# tree.set_all_parents()
 
-in_order_dfs(tree, view_parents)
+# in_order_dfs(tree, view_parents)
 # Output:
 # A: Parent = B
 # B: Parent = F
