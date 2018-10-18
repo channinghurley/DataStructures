@@ -6,26 +6,25 @@
     * verify recent code changes
 """
 
-from Trees.Node import *
-from Trees.Leaf import *
+from Trees.BinaryTree import *
 
 def bfs(tree: Node, process=None):
     """Execute an iterative breadth-first (level-order) traversal on a binary tree, calling the function "process" on each node.
     """
 
     assert callable(process) or not process, "process must be callable"
-    assert isinstance(tree, Node), "Argument must be of type BinaryTree or subtype thereof"
+    assert isinstance(tree, Node), "Argument must be of type Node or None"
 
-    if not tree.is_empty():
+    if tree:
         queue = []
-        queue.append(tree.root)
+        queue.append(tree)
         while queue:
             node = queue.pop(0)
             if process:
                 process(node)
-            if not node.left.is_empty():
+            if node.left:
                 queue.append(node.left)
-            if not node.right.is_empty():
+            if node.right:
                 queue.append(node.right)
 
 
@@ -33,9 +32,9 @@ def preorder_dfs(tree: Node, process=None):
     """Execute a recursive pre-order depth-first traversal on a binary tree, calling the function "process" on each node.
     """
 
-    assert isinstance(tree, Node), "Argument must be of type Node or subtype thereof"
+    assert isinstance(tree, Node) or tree is None, "Argument must be of type Node or None"
 
-    if not tree.is_empty():
+    if tree:
         if process:
             assert callable(process), "process must be callable"
             process(tree)
@@ -47,9 +46,9 @@ def in_order_dfs(tree: Node, process=None):
     """Execute a recursive in-order traversal on a binary tree, calling the function "process" on each node.
     """
 
-    assert isinstance(tree, Node), "Argument must be of type BinaryTree or subtype thereof"
+    assert isinstance(tree, Node) or tree is None, "Argument must be of type Node or None"
 
-    if not tree.is_empty():
+    if tree:
         in_order_dfs(tree.left, process)
         if process:
             assert callable(process), "process must be callable"
@@ -61,9 +60,9 @@ def postorder_dfs(tree: Node, process=None):
     """Execute a recursive post-order traversal on a binary tree, calling the function "process" on each node.
     """
 
-    assert isinstance(tree, Node), "Argument must be of type BinaryTree or subtype thereof"
+    assert isinstance(tree, Node) or tree is None, "Argument must be of type Node or None"
 
-    if not tree.is_empty():
+    if tree:
         postorder_dfs(tree.left, process)
         postorder_dfs(tree.right, process)
         if process:

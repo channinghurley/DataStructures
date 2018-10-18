@@ -2,11 +2,12 @@
     TODO
     * docstring
     * verify recent changes
+    * get rid of class, use None instead
 """
 
-from Trees.Node import Node
+# from Trees.Node import Node
 
-
+'''
 class Leaf(Node):
     """"An empty node in a binary tree, i.e. a node with no data and no children ("leaf" node). Extends Node to allow for convenience when implementing recursive methods that operate on Trees and maintain the logic that all subtrees/subnodes within a tree can be themselves considered a tree.
     """
@@ -19,3 +20,4 @@ class Leaf(Node):
 
     def is_empty(self):
         return True
+'''
