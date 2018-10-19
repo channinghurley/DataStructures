@@ -1,12 +1,25 @@
 """Test file for tinkering"""
 
-from Trees.BinaryTree import Node
-from Trees.BinaryTreeUtils import *
+from Tree.BinaryTree import Node
+from Tree.Utils import fold as tree_fold
+from List.Utils import fold as list_fold
 
 tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
 
-preorder_dfs(tree, lambda n: print(n.data, end=" "), 0)
-print()
+l = [1, 2, 3, 4, 5]
+
+print(list_fold(l, 0, lambda acc, x: acc - x))
+
+t = Node(Node(Node(data=10), 10, Node(data=11)), 1111, Node(Node(data=113), 13, Node(data=14)))
+print(t)
+print(tree_fold(t, 0, lambda acc, x: acc + x))
+print(t.size())
+
+# def l(n: Node, acc=0):
+#     print(n.data)
+
+# preorder_dfs(tree, lambda n: print(n.data, end=" "), 0)
+# print()
 
 # print(tree)
 # print(tree.max_depth())

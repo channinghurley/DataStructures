@@ -1,13 +1,11 @@
 """Author: Channing J. Hurley
-    Module: BinaryTreeUtils -- Defines methods that operate on binary trees, including standard binary n traversal algorithms.
+    Module: BinaryTreeUtils -- Defines methods that operate on binary trees, including standard binary tree traversal algorithms.
 
     TODO:
-    * update variable names
-    * verify recent code changes
-    * add accumulator
+    
 """
 
-from Trees.BinaryTree import *
+from Tree.BinaryTree import Node
 
 def bfs(n: Node, process=None):
     """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from node n, calling the function "process" on each node.
@@ -70,11 +68,26 @@ def postorder_dfs(n: Node, process=None):
             assert callable(process), "process must be callable"
             process(n)
 
-
+'''
 def dfs_acc(n: Node, process=None, acc=None):
     """Execute a recursive in-order depth-first traversal of a binary tree, calling the optional function "process" on each node and maintaining an accumulator "acc" to track data throughout recursion
     """
 
     assert isinstance(n, Node) or n is None, "Argument must be of type Node or None"
 
-    return #TODO
+    if n:
+        in_order_dfs(n.left, process, acc)
+        if process:
+            assert callable(process), "process must be callable"
+            process(n)
+        in_order_dfs(n.right, process)
+'''
+
+def fold(n, acc, op):
+    """"""
+    if n:
+        new_acc = op(acc, n.data)
+        new_acc = fold(n.left, new_acc, op)
+        return fold(n.right, new_acc, op)
+    else:
+        return acc
