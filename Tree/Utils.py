@@ -2,7 +2,7 @@
     Module: BinaryTreeUtils -- Defines methods that operate on binary trees, including standard binary tree traversal algorithms.
 
     TODO:
-    
+
 """
 
 from Tree.BinaryTree import Node
@@ -68,26 +68,16 @@ def postorder_dfs(n: Node, process=None):
             assert callable(process), "process must be callable"
             process(n)
 
-'''
-def dfs_acc(n: Node, process=None, acc=None):
-    """Execute a recursive in-order depth-first traversal of a binary tree, calling the optional function "process" on each node and maintaining an accumulator "acc" to track data throughout recursion
-    """
-
-    assert isinstance(n, Node) or n is None, "Argument must be of type Node or None"
-
-    if n:
-        in_order_dfs(n.left, process, acc)
-        if process:
-            assert callable(process), "process must be callable"
-            process(n)
-        in_order_dfs(n.right, process)
-'''
 
 def fold(n, acc, op):
-    """"""
+    """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc"
+    """"
+
+    assert callable(op), "Operation must be callable."
+
     if n:
-        new_acc = op(acc, n.data)
-        new_acc = fold(n.left, new_acc, op)
-        return fold(n.right, new_acc, op)
+        acc = op(acc, n.data)
+        acc = fold(n.left, acc, op)
+        return fold(n.right, acc, op)
     else:
         return acc

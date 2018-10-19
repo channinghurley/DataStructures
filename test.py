@@ -6,14 +6,15 @@ from List.Utils import fold as list_fold
 
 tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
 
-l = [1, 2, 3, 4, 5]
-
-print(list_fold(l, 0, lambda acc, x: acc - x))
-
+# l = [1, 2, 3, 4, 5]
+#
+# print(list_fold(l, 0, lambda acc, x: acc - x))
+#
 t = Node(Node(Node(data=10), 10, Node(data=11)), 1111, Node(Node(data=113), 13, Node(data=14)))
 print(t)
 print(tree_fold(t, 0, lambda acc, x: acc + x))
 print(t.size())
+
 
 # def l(n: Node, acc=0):
 #     print(n.data)
