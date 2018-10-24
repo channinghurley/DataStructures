@@ -34,13 +34,22 @@ class Node():
 
     def __bool__(self):
         """Return False iff the node is empty, i.e. has no data and no children."""
-        return not (self == Node(None, None, None) or self is None)
+        return not (self is None or self == Node(None, None, None))
 
     def __eq__(self, other):
-        """Return True iff all attributes of the two nodes are equal."""
-        return (self.data  == other.data and
-                self.left  == other.left and
-                self.right == other.right)
+        """Return True iff all attributes of the two nodes are equal.
+
+        TODO:
+        * verify and cleanup, do not try to get attr's. on NoneTypes
+        """
+        if self is None and other is None:
+            return True
+        elif self is None or other is None:
+            return False
+        else:
+            return (self.data  == other.data and
+                    self.left  == other.left and
+                    self.right == other.right)
 
     def __ne__(self, other):
         return not (self == other)

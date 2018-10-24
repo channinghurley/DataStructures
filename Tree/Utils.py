@@ -71,12 +71,15 @@ def postorder_dfs(n: Node, process=None):
 
 def fold(n, acc, op):
     """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc".
+
+    TODO:
+    * fix so that op does not necessarily perform on data; update docstrign accordingly
     """
 
     assert callable(op), "Operation must be callable."
 
     if n:
-        acc = op(acc, n.data)
+        acc = op(acc, n)
         acc = fold(n.left, acc, op)
         return fold(n.right, acc, op)
     else:

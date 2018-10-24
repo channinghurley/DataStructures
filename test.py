@@ -11,12 +11,14 @@ tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E")))
 #
 # print(list_fold(l, 0, lambda acc, x: acc - x))
 #
-# t = Node(Node(Node(data=10), 10, Node(data=11)), 1111, Node(Node(data=113), 13, Node(data=14)))
+# t = Node(Node(Node(data=2), 1, Node(data=1)), 1, Node(Node(data=2), 3, Node(data=1)))
 # print(t)
-# print(tree_fold(t, 0, lambda acc, x: acc + x))
+# print(tree_fold(t, 0, lambda acc, x: acc + x.data))
 # print(t.size())
 
-print(tree)
+# print(tree)
+
+t2 = Node(Node(Node(Node(Node(data=1)))))
 
 def depth(root, n): # TODO: check if node in tree, terminate if not
     if n is root:
@@ -24,7 +26,12 @@ def depth(root, n): # TODO: check if node in tree, terminate if not
     else:
         return depth(root, n.parent) + 1
 
-print(depth(tree, test))
+# print(depth(tree, test))
+
+def max_depth(t):
+    return tree_fold(t, 0, lambda acc, n: max(acc, depth(t, n)))
+
+print(max_depth(t2))
 
 
 # def l(n: Node, acc=0):
