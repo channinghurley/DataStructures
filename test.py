@@ -4,16 +4,27 @@ from Tree.BinaryTree import Node
 from Tree.Utils import fold as tree_fold
 from List.Utils import fold as list_fold
 
-tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", None)))
+test = Node(data=1)
+tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", test)))
 
 # l = [1, 2, 3, 4, 5]
 #
 # print(list_fold(l, 0, lambda acc, x: acc - x))
 #
-t = Node(Node(Node(data=10), 10, Node(data=11)), 1111, Node(Node(data=113), 13, Node(data=14)))
-print(t)
-print(tree_fold(t, 0, lambda acc, x: acc + x))
-print(t.size())
+# t = Node(Node(Node(data=10), 10, Node(data=11)), 1111, Node(Node(data=113), 13, Node(data=14)))
+# print(t)
+# print(tree_fold(t, 0, lambda acc, x: acc + x))
+# print(t.size())
+
+print(tree)
+
+def depth(root, n): # TODO: check if node in tree, terminate if not
+    if n is root:
+        return 0
+    else:
+        return depth(root, n.parent) + 1
+
+print(depth(tree, test))
 
 
 # def l(n: Node, acc=0):

@@ -70,8 +70,8 @@ def postorder_dfs(n: Node, process=None):
 
 
 def fold(n, acc, op):
-    """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc"
-    """"
+    """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc".
+    """
 
     assert callable(op), "Operation must be callable."
 
