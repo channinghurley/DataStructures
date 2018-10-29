@@ -31,7 +31,10 @@ def depth(root, n): # TODO: check if node in tree, terminate if not
 def max_depth(t):
     return tree_fold(t, 0, lambda acc, n: max(acc, depth(t, n)))
 
-print(max_depth(t2))
+# print(max_depth(t2))
+
+def is_in(self, item):
+    pass
 
 
 # def l(n: Node, acc=0):

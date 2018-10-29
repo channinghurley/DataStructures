@@ -29,7 +29,6 @@ class Node():
         self.set_parent(None)
 
     def __str__(self):
-        l, r, d = self.left, self.right, self.data
         return "Node({}, {}, {})".format(self.left, self.data, self.right)
 
     def __bool__(self):
@@ -37,26 +36,25 @@ class Node():
         return not (self is None or self == Node(None, None, None))
 
     def __eq__(self, other):
-        """Return True iff all attributes of the two nodes are equal.
+        """Return True iff all attributes of the two nodes are equal."""
 
-        TODO:
-        * verify and cleanup, do not try to get attr's. on NoneTypes
-        """
-        if self is None and other is None:
-            return True
-        elif self is None or other is None:
-            return False
-        else:
+        if isinstance(other, Node):
             return (self.data  == other.data and
                     self.left  == other.left and
                     self.right == other.right)
+        return False
 
     def __ne__(self, other):
         return not (self == other)
 
     def __contains__(self, item): # TODO
-        """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self). If item is not a Node, return True if the data of the root or any of it's subnodes is item."""
-        return False
+        """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self). If item is not a Node, return True if the data of the root or any of it's subnodes is item.
+        """
+
+        if isinstance(item, Node):
+            pass
+        else:
+            return False
 
     def is_right(self):
         """Return True iff the node is a right child."""
