@@ -6,6 +6,9 @@ from List.Utils import fold as list_fold
 
 test = Node(data=1)
 tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", test)))
+tree2 = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", test)))
+
+print("in test", Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))) in tree)
 
 # l = [1, 2, 3, 4, 5]
 #

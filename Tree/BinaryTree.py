@@ -51,8 +51,15 @@ class Node():
         """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self). If item is not a Node, return True if the data of the root or any of it's subnodes is item.
         """
 
-        if isinstance(item, Node):
-            pass
+        if self == item:
+            return True
+        elif isinstance(item, Node):
+            ret = False
+            if isinstance(self.left, Node):
+                ret |= item in self.left
+            if isinstance(self.right, Node):
+                ret |= item in self.right
+            return ret
         else:
             return False
 
