@@ -48,7 +48,7 @@ class Node():
     def __ne__(self, other):
         return not (self == other)
 
-    def __contains__(self, item): # TODO
+    def __contains__(self, item):
         """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self).
         """
         from Tree.Utils import find
@@ -86,26 +86,6 @@ class Node():
 
         self.left = l
         if l: l.set_parent(self) # Do not set the parent of NonTypes
-
-    def max_depth(self, depth=-1):
-        """Return the depth of the node that is furthest from the root (self), where depth is the number of "edges" from the root to a node. Return zero if the tree is empty.
-        TODO: move to utils for a more functional approach, use fold
-        """
-
-        l, r = self.left, self.right
-        # TODO: remove assertions if they are enforced by setters
-        assert isinstance(l, Node) or not l, "Left child must be Node or None, instead has type {}".format(type(l))
-        assert isinstance(r, Node) or not r, "Right child must be Node or None, instead has type {}".format(type(r))
-
-        depth += 1
-        if l and r:
-            return max(l.max_depth(depth), r.max_depth(depth))
-        elif l:
-            return l.max_depth(depth)
-        elif r:
-            return r.max_depth(depth)
-        else:
-            return depth
 
     def size(self):
         """Return the number of nodes in the tree starting at root (self)"""

@@ -3,7 +3,6 @@
 
     TODO:
     * pre/post/in order fold
-    * add assertions to depth methods to enusre nodes
 """
 
 from Tree.BinaryTree import Node
