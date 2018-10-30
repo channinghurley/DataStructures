@@ -5,6 +5,7 @@
     * update docstring
     * depth
     * in
+    * make data the first arg for convenience
     * iterative search
     * recursive search
     * insert / __add__
@@ -48,20 +49,10 @@ class Node():
         return not (self == other)
 
     def __contains__(self, item): # TODO
-        """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self). If item is not a Node, return True if the data of the root or any of it's subnodes is item.
+        """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self).
         """
-
-        if self == item:
-            return True
-        elif isinstance(item, Node):
-            ret = False
-            if isinstance(self.left, Node):
-                ret |= item in self.left
-            if isinstance(self.right, Node):
-                ret |= item in self.right
-            return ret
-        else:
-            return False
+        from Tree.Utils import find
+        return True if find(self, item) else False
 
     def is_right(self):
         """Return True iff the node is a right child."""

@@ -2,13 +2,15 @@
 
 from Tree.BinaryTree import Node
 from Tree.Utils import fold as tree_fold
+from Tree.Utils import depth
+from Tree.Utils import max_depth
+from Tree.Utils import find
 from List.Utils import fold as list_fold
 
-test = Node(data=1)
+test = Node(data=1, left=Node(data=1))
 tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", test)))
-tree2 = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I", test)))
 
-print("in test", Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))) in tree)
+
 
 # l = [1, 2, 3, 4, 5]
 #
@@ -23,22 +25,33 @@ print("in test", Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="
 
 t2 = Node(Node(Node(Node(Node(data=1)))))
 
-def depth(root, n): # TODO: check if node in tree, terminate if not
-    if n is root:
-        return 0
-    else:
-        return depth(root, n.parent) + 1
 
+
+# print(Node(data="A") in tree) # True
+# print(find(tree, tree))
+#
+#
+#
+#
 # print(depth(tree, test))
+# print(depth(tree, Node(data="A")))
+# print(depth(tree, tree))
+# print(depth(test, Node(data=1)))
+#
+#
+#
+# print(max_depth(t2)) # 4
+# print(max_depth(tree)) # 3
+# print(max_depth(Node()))
+# print(max_depth(test))
 
-def max_depth(t):
-    return tree_fold(t, 0, lambda acc, n: max(acc, depth(t, n)))
-
-# print(max_depth(t2))
-
-def is_in(self, item):
-    pass
-
+print(test in tree) # True
+print(tree in test) # False
+print(t2 in tree) # False
+print(Node(data="A") in tree) # True
+print(Node(data="a") in tree) # False
+print(Node(None, "G", Node(Node(data="H"), "I", test)) in tree) # True
+print(Node(Node(data="H"), "I", test) in tree) # True
 
 # def l(n: Node, acc=0):
 #     print(n.data)
