@@ -67,9 +67,6 @@ def postorder_dfs(n: Node, process=None):
 
 def fold(n, acc, op):
     """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc".
-
-    TODO:
-    * fix so that op does not necessarily perform on data; update docstrign accordingly
     """
 
     assert callable(op), "Operation must be callable."
@@ -108,7 +105,3 @@ def max_depth(t):
     """Return the maximum depth of tree t, i.e. the depth of the node with the greatest depth relative to node t."""
     assert isinstance(t, Node), "Argument must be of type Node."
     return fold(t, 0, lambda acc, n: max(acc, depth(t, n)))
-
-def pretty_print(t):
-    """Prett-print a binary tree."""
-    pass

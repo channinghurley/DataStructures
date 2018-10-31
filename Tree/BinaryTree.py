@@ -3,14 +3,7 @@
 
     TODO:
     * update docstring
-    * depth
-    * in
     * make data the first arg for convenience
-    * iterative search
-    * recursive search
-    * insert / __add__
-    * delete
-    * is_sorted
 """
 
 
@@ -34,7 +27,7 @@ class Node():
 
     def __bool__(self):
         """Return False iff the node is empty, i.e. has no data and no children."""
-        return not (self is None or self == Node(None, None, None))
+        return not self == Node(None, None, None)
 
     def __eq__(self, other):
         """Return True iff all attributes of the two nodes are equal."""
