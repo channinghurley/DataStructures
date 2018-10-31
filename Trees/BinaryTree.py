@@ -1,14 +1,18 @@
 """Author: Channing J. Hurley
 
+    Module: Trees.BinaryTree -- Defines the Node class, which makes up the structure of a binary tree.
+
+    Notes:
+        * This is not necessarily a binary search tree as this class itself enforces no node order.
 
     TODO:
-    * update docstring
-    * make data the first arg for convenience
+        * update docstring
+        * make data the first arg for convenience
 """
 
 
 class Node():
-    """A node in a binary tree containing the node data, a right child, a left child, and an optional reference to the parent node. Extends BinaryTree to allow for convenience when implementing recursive methods that operate on Trees and to maintain the logic that all subtrees within a tree can be themselves considered a tree.
+    """A node in a binary tree consisting of data, a left child, a right child, and an optional parent node. The children and parent are themselves instances of the Node class (if they exist) For added functionality, use the Trees.Util methods.
     """
 
     def __init__(
@@ -44,7 +48,7 @@ class Node():
     def __contains__(self, item):
         """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self).
         """
-        from Tree.Utils import find
+        from Trees.Util import find
         return True if find(self, item) else False
 
     def is_right(self):
@@ -81,6 +85,6 @@ class Node():
         if l: l.set_parent(self) # Do not set the parent of NonTypes
 
     def size(self):
-        """Return the number of nodes in the tree starting at root (self)"""
-        from Tree.Utils import fold
+        """Return the number of nodes in the tree starting at root (self)."""
+        from Trees.Util import fold
         return fold(self, 0, lambda acc, n: acc + 1)

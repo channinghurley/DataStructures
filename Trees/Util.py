@@ -1,14 +1,28 @@
 """Author: Channing J. Hurley
-    Module: BinaryTreeUtils -- Defines methods that operate on binary trees, including standard binary tree traversal algorithms.
+
+    Module: Trees.Util -- Defines utility methods for binary trees.
+
+    Methods:
+        * bfs            -- Execute a breadth-first (level-order) traversal on a tree.
+        * preorder_dfs   -- Execute a pre-order depth-first traversal on a tree.
+        * in_order_dfs   -- Execute an in-order depth-first traversal on a tree.
+        * post_order_dfs -- Execute a post-order depth-first traversal on a tree.
+        * fold           -- Like functools.reduce, but for binary trees instead of lists.
+        * find           -- Find a node within a tree.
+        * depth          -- Get the depth of a node within a tree.
+        * max_depth      -- Get the maximum depth of a binary tree.
 
     TODO:
-    * pre/post/in order fold
+        * Make find match on data instead of node itself?
 """
 
-from Tree.BinaryTree import Node
+from Trees.BinaryTree import Node
 
 def bfs(n: Node, process=None):
     """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from node n, calling the function "process" on each node.
+
+    Usage:
+    >>> bfs(node, lambda n: print(n.data)) # Prints all node data in level-order.
     """
 
     assert callable(process) or not process, "process must be callable"
@@ -66,7 +80,10 @@ def postorder_dfs(n: Node, process=None):
             process(n)
 
 def fold(n, acc, op):
-    """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc".
+    """Recursively "fold" a binary tree, i.e. condense all of the tree's data into one single peice of data that is the result of executing the callable operation "op" on all nodes and accumulating the result in the accumulator "acc", similar to functools.reduce.
+
+    Usage:
+    >>> fold(tree, 0, lambda acc, n: acc + n.data) # Return the sum of all data in the tree.
     """
 
     assert callable(op), "Operation must be callable."
@@ -78,30 +95,30 @@ def fold(n, acc, op):
     else:
         return acc
 
-def find(root, target):
+def find(target, root):
     """Find and return the first node equivalent to node n in tree rooted at root. Return None if target is not in root."""
     assert isinstance(root, Node), "Argument root must be of type Node."
     assert isinstance(root, Node), "Argument target must be of type Node."
     return fold(root, None, lambda acc, n: n if n == target else acc)
 
-def depth(root, n):
+def depth(n, root):
     """Return the depth of node n relative to node root, where depth is the number of edges that must be traversed to get from one node to another. If node n is not in the tree rooted at node root, return -1.
     """
 
-    assert isinstance(root, Node), "Argument root must be of Type Node."
     assert isinstance(n, Node), "Argument n must be of type Node."
+    assert isinstance(root, Node), "Argument root must be of Type Node."
 
-    n = find(root, n) # point n to the equivalent node within the tree
+    n = find(n, root) # point n to the equivalent node within the tree
 
     if n:
         if n is root:
             return 0
         else:
-            return depth(root, n.parent) + 1
+            return depth(n.parent, root) + 1
     else:
         return -1
 
 def max_depth(t):
     """Return the maximum depth of tree t, i.e. the depth of the node with the greatest depth relative to node t."""
     assert isinstance(t, Node), "Argument must be of type Node."
-    return fold(t, 0, lambda acc, n: max(acc, depth(t, n)))
+    return fold(t, 0, lambda acc, n: max(acc, depth(n, t)))
