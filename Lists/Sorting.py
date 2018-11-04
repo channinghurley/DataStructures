@@ -10,3 +10,9 @@
         * selection sort
         * insertion sort
 """
+
+def mergesort(l):
+    print("mergesort")
+
+def quicksort(l):
+    print("quicksort")
