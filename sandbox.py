@@ -9,6 +9,7 @@ tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E")))
 
 tree2 = Node(Node(Node(data=4), 2, Node(data=5)), 1, Node(Node(data=6), 3, Node(data=7)))
 
+
 def get_diffs(l):
     return [l[i] - l[i-1] for i in range(1, len(l) - 1)]
 
@@ -37,7 +38,7 @@ polys = [d0, d1, d2, d3, d4, d5]
 # Call and print outputs
 for i, poly in enumerate(polys):
     print("Expected: {} Actual: {}".format(i, degree(poly)))
-
+    
 # print(fold(tree2, 0, lambda acc, n: acc + n.data))
 
 # bfs(tree2, lambda n: print(n.data))
