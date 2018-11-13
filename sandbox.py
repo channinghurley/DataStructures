@@ -36,8 +36,21 @@ def fib(n):
         seq.append(seq[-1] + seq[-2])
     return seq[n-1]
 
+@timed
+def fib_rec(n):
+    """Return the n-th number of the fibonacci sequence. Recursive, far less efficient than
+    iterative and generative implementations."""
+    if n <= 1:
+        return n
+    else:
+        return fib_rec(n - 1) + fib_rec(n - 2)
+
 def gen_fib():
-    """Return an infinite stream of the fibonacci sequence as a generator. More memory-efficient (maybe more time-efficient?) than the iterative implementation."""
+    """Return an infinite stream of the fibonacci sequence as a generator. More memory and time
+    efficient than the iterative implementation. Use islice or a list comprehension to get a finite
+    slice of the infinite sequence.
+    """
+
     a, b = 0, 1
     while True:
         yield a
@@ -45,27 +58,46 @@ def gen_fib():
 
 @timed
 def get_fib(n):
-    """Get the n-th fibonacci number using the gen_fib generator (1 based)."""
-    return next(islice(gen_fib(), n - 1, n))
+    """Get the n-th fibonacci number using the gen_fib generator (n is 0 based)."""
+    return next(islice(gen_fib(), n, n + 1))
 
+# print(get_fib(20))
+
+
+# g = gen_fib()
+
+
+
+
+def test(n):
+    i = 0
+    while i < n:
+        sent = (yield i)
+        i = sent if sent else i + 1
+
+# g = test(10)
+# print(next(g))
+# g.send(5)
+# print(next(g))
 
 # print(list(gen_fib())[28]) # Don't do this; highly inefficient
 # print(get_fib(28))
 
-iter_res, itime = fib(100)
+iter_res, itime = fib(101)
 gen_res, gtime = get_fib(100)
 
 assert iter_res == gen_res, "Solution do not match!"
 print("Iterative:", itime)
+print("Recursive:", fib_rec(28)[1])
 print("Generative:", gtime)
-print("Difference:", abs(gtime - itime))
 print("Winner:", "Iterative" if itime < gtime else "Generative")
 
 
 
 
-# first_29 = [i for i in islice(gen_fib(), 29)]
+first_29 = [i for i in islice(gen_fib(), 20, 29)]
 # print(first_29)
+# print(fib_act[20])
 # print(first_29 == fib_act)
 
 # def fib_rec(n, seq=None):
