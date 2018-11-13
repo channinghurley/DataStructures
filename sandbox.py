@@ -63,6 +63,7 @@ print("Winner:", "Iterative" if itime < gtime else "Generative")
 
 
 
+
 # first_29 = [i for i in islice(gen_fib(), 29)]
 # print(first_29)
 # print(first_29 == fib_act)
