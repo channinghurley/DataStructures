@@ -16,7 +16,7 @@
         * Make find match on data instead of node itself?
 """
 
-from Trees.BinaryTree import Node
+from trees.binary_tree import Node
 
 def bfs(n: Node, process=None):
     """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from node n, calling the function "process" on each node.

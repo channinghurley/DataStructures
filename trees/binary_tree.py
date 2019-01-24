@@ -48,7 +48,7 @@ class Node():
     def __contains__(self, item):
         """Return True if item is in self, i.e. return True if item is self or item is a subnode of the root node (self).
         """
-        from Trees.Util import find
+        from trees.util import find
         return True if find(self, item) else False
 
     def is_right(self):
@@ -86,5 +86,5 @@ class Node():
 
     def size(self):
         """Return the number of nodes in the tree starting at root (self)."""
-        from Trees.Util import fold
+        from trees.util import fold
         return fold(self, 0, lambda acc, n: acc + 1)

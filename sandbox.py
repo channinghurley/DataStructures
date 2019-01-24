@@ -1,5 +1,6 @@
 """File for tinkering"""
 
+<<<<<<< HEAD
 from itertools import islice
 from time import time
 
@@ -74,6 +75,47 @@ def test(n):
     while i < n:
         sent = (yield i)
         i = sent if sent else i + 1
+=======
+# from Trees.BinaryTree import Node
+# from Trees.Util import *
+# from Lists.Util import fold as list_fold
+from trees.binary_tree import *
+from trees.util import bfs
+
+t = Node(Node(data=2), 1, Node(data=3))
+n = Node(data=5)
+
+# print(t)
+#
+# t1 = Node()
+# t2 = Node()
+# print(t1 == t2)
+
+tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
+
+
+n.set_left(tree)
+
+bfs(tree, lambda n: print(n.data))
+
+
+# t2 = Node(Node(None, None, None), 1, Node(None, None, None))
+# print(t2)
+
+# l = [1,2,3,4,5]
+
+# print(l*2)
+
+# print(list(map(lambda x: print(x), l)))
+
+
+
+#
+# test = Node(data=1, left=Node(data=1))
+# tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
+#
+# tree2 = Node(Node(Node(data=4), 2, Node(data=5)), 1, Node(Node(data=6), 3, Node(data=7)))
+>>>>>>> b659c9bc497a95690641f2bc98d5382c071390df
 
 # g = test(10)
 # print(next(g))
