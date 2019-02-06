@@ -7,91 +7,98 @@ from time import time
 # from Trees.Util import *
 # from Lists.Util import fold as list_fold
 from trees.binary_tree import Node
-from trees.util import bfs
+from trees.util import bfs, in_order_dfs
+from trees.binary_search_tree import Bst
 
 # test = Node(data=1, left=Node(data=1))
 # tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
 #
 # tree2 = Node(Node(Node(data=4), 2, Node(data=5)), 1, Node(Node(data=6), 3, Node(data=7)))
 
-
-tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
-
-bfs(tree, lambda n: print(n.data))
-
-
-
-
-def timed(f):
-    """Decorator to time function calls."""
-    def caller(*args):
-        start = time()
-        res = f(*args)
-        return res, time() - start
-    return caller
-
-fib_act = [
-    0, 1, 1, 2, 3, 5, 8, 13, 21, 34,
-    55, 89, 144, 233, 377, 610, 987,
-    1597, 2584, 4181, 6765, 10946,
-    17711, 28657, 46368, 75025,
-    121393, 196418, 317811
-]
-
-@timed
-def fib(n):
-    """Return the n-th number of the fibonacci sequence. Iterative; relatively memory-inefficient."""
-    seq = [0, 1]
-    while len(seq) < n:
-        seq.append(seq[-1] + seq[-2])
-    return seq[n-1]
-
-@timed
-def fib_rec(n):
-    """Return the n-th number of the fibonacci sequence. Recursive, far less efficient than
-    iterative and generative implementations."""
-    if n <= 1:
-        return n
-    else:
-        return fib_rec(n - 1) + fib_rec(n - 2)
-
-def gen_fib():
-    """Return an infinite stream of the fibonacci sequence as a generator. More memory and time
-    efficient than the iterative implementation. Use islice or a list comprehension to get a finite
-    slice of the infinite sequence.
-    """
-
-    a, b = 0, 1
-    while True:
-        yield a
-        a, b = b, a + b
-
-@timed
-def get_fib(n):
-    """Get the n-th fibonacci number using the gen_fib generator (n is 0 based)."""
-    return next(islice(gen_fib(), n, n + 1))
-
-# print(get_fib(20))
+t = Bst(data=1)
+t.insert(Bst(data=2))
+t.insert(Bst(data=-1))
+t.insert(Bst(data=3))
+print(t)
 
 
-# g = gen_fib()
+# tree = Bst(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
+
+# in_order_dfs(tree, lambda n: print(n.data))
 
 
 
 
-def test(n):
-    i = 0
-    while i < n:
-        sent = (yield i)
-        i = sent if sent else i + 1
-# from Trees.BinaryTree import Node
-# from Trees.Util import *
-# from Lists.Util import fold as list_fold
-# from trees.binary_tree import *
-# from trees.util import bfs
-
-t = Node(Node(data=2), 1, Node(data=3))
-n = Node(data=5)
+# def timed(f):
+#     """Decorator to time function calls."""
+#     def caller(*args):
+#         start = time()
+#         res = f(*args)
+#         return res, time() - start
+#     return caller
+#
+# fib_act = [
+#     0, 1, 1, 2, 3, 5, 8, 13, 21, 34,
+#     55, 89, 144, 233, 377, 610, 987,
+#     1597, 2584, 4181, 6765, 10946,
+#     17711, 28657, 46368, 75025,
+#     121393, 196418, 317811
+# ]
+#
+# @timed
+# def fib(n):
+#     """Return the n-th number of the fibonacci sequence. Iterative; relatively memory-inefficient."""
+#     seq = [0, 1]
+#     while len(seq) < n:
+#         seq.append(seq[-1] + seq[-2])
+#     return seq[n-1]
+#
+# @timed
+# def fib_rec(n):
+#     """Return the n-th number of the fibonacci sequence. Recursive, far less efficient than
+#     iterative and generative implementations."""
+#     if n <= 1:
+#         return n
+#     else:
+#         return fib_rec(n - 1) + fib_rec(n - 2)
+#
+# def gen_fib():
+#     """Return an infinite stream of the fibonacci sequence as a generator. More memory and time
+#     efficient than the iterative implementation. Use islice or a list comprehension to get a finite
+#     slice of the infinite sequence.
+#     """
+#
+#     a, b = 0, 1
+#     while True:
+#         yield a
+#         a, b = b, a + b
+#
+# @timed
+# def get_fib(n):
+#     """Get the n-th fibonacci number using the gen_fib generator (n is 0 based)."""
+#     return next(islice(gen_fib(), n, n + 1))
+#
+# # print(get_fib(20))
+#
+#
+# # g = gen_fib()
+#
+#
+#
+#
+# def test(n):
+#     i = 0
+#     while i < n:
+#         sent = (yield i)
+#         i = sent if sent else i + 1
+# # from Trees.BinaryTree import Node
+# # from Trees.Util import *
+# # from Lists.Util import fold as list_fold
+# # from trees.binary_tree import *
+# # from trees.util import bfs
+#
+# t = Node(Node(data=2), 1, Node(data=3))
+# n = Node(data=5)
 
 # print(t)
 #
@@ -132,8 +139,8 @@ n = Node(data=5)
 # print(list(gen_fib())[28]) # Don't do this; highly inefficient
 # print(get_fib(28))
 
-iter_res, itime = fib(101)
-gen_res, gtime = get_fib(100)
+# iter_res, itime = fib(101)
+# gen_res, gtime = get_fib(100)
 '''
 assert iter_res == gen_res, "Solution do not match!"
 print("Iterative:", itime)
@@ -144,7 +151,7 @@ print("Winner:", "Iterative" if itime < gtime else "Generative")
 
 
 
-first_29 = [i for i in islice(gen_fib(), 20, 29)]
+# first_29 = [i for i in islice(gen_fib(), 20, 29)]
 # print(first_29)
 # print(fib_act[20])
 # print(first_29 == fib_act)

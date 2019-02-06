@@ -7,7 +7,8 @@
 
     TODO:
         * update docstring
-        * make data the first arg for convenience
+        * make data the first arg for convenience (construct nodes Node(1) for example)
+        * pretty_print -- current str should be repr
 """
 
 

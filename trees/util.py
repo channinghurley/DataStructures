@@ -19,7 +19,8 @@
 from trees.binary_tree import Node
 
 def bfs(n: Node, process=None):
-    """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from node n, calling the function "process" on each node.
+    """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from
+    node n, calling the function "process" on each node.
 
     Usage:
     >>> bfs(node, lambda n: print(n.data)) # Prints all node data in level-order.
