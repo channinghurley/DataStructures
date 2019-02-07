@@ -9,6 +9,7 @@
         * update docstring
         * make data the first arg for convenience (construct nodes Node(1) for example)
         * pretty_print -- current str should be repr
+        * __getitem__ or next so you can iterate
 """
 
 
