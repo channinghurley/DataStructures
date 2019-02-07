@@ -27,7 +27,7 @@ def issorted(t, key=gt):
     comparison key defaults to the greater than operator, a custom sorting key can be supplied.
     """
 
-    def check_children(acc, n):
+    def check_children(acc, n): # FIXME
         """Return True if the immediate children of a node satisfy the binary search property."""
         l, r = n.left, n.right
         if l:

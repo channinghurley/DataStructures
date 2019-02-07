@@ -16,12 +16,7 @@ from trees.binary_tree import Node
 class Bst(Node):
     """"""
 
-    def __init__(
-        self,
-        data=None,
-        left=None,
-        right=None
-    ):
+    def __init__(self, data=None, left=None, right=None):
         super().__init__(data, left, right)
 
     @classmethod
@@ -42,19 +37,15 @@ class Bst(Node):
         within the BST; i.e. the key in each node must be greater than or equal to the key stored
         in any node in the left sub-tree, and less than or equal to an key stored in the right
         sub-tree.
-
-        TODO:
-            * allow insertion of node or data?
-            * rewrite with one null check on self, i.e. single recursive base case. Will allow calling insert on empty node.
         """
 
         if n.data > self.data:
             if self.right:
                 self.right.insert(n)
             else:
-                self.right = n
+                self.set_right(n)
         else:
             if self.left:
                 self.left.insert(n)
             else:
-                self.left = n
+                self.set_left(n)

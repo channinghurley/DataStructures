@@ -7,12 +7,19 @@ from time import time
 # from Trees.Util import *
 # from Lists.Util import fold as list_fold
 from trees.binary_tree import Node
-from trees.util import bfs, in_order_dfs, issorted
+from trees.util import *
 from trees.bst import Bst
 
-# tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
+tree = Bst("F", Bst("B", Bst("A"), Bst("D", Bst("C"), Bst("E"))), Bst("G", Bst("I", left=Bst("H"))))
+bfs(tree, lambda n: print(n.data, end=' '))
+print(issorted(tree)) 
 
-t = Bst.from_list([i for i in range(-10, 10)])
+
+# l = [i for i in range(-10, 10)]
+# print(len(l))
+# t = Bst.from_list(l)
+# bfs(t, lambda n: print(n.data, end=' '))
+# print("\n", depth(find(Node(9), t), t))
 
 
 
@@ -27,11 +34,11 @@ t = Bst.from_list([i for i in range(-10, 10)])
 # print(t3)
 # print(issorted(t3))
 
-l = [-i if i % 2 else i for i in range(10)]
-print(l)
-t = Bst.from_list(l)
-print(t)
-in_order_dfs(t, lambda n: print(n.data, end=' '))
+# l = [-i if i % 2 else i for i in range(10)]
+# print(l)
+# t = Bst.from_list(l)
+# print(t)
+# in_order_dfs(t, lambda n: print(n.data, end=' '))
 
 # def timed(f):
 #     """Decorator to time function calls."""

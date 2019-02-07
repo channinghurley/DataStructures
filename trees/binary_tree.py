@@ -16,12 +16,7 @@ class Node():
     """A node in a binary tree consisting of data, a left child, a right child, and an optional parent node. The children and parent are themselves instances of the Node class (if they exist) For added functionality, use the Trees.Util methods.
     """
 
-    def __init__(
-        self,
-        data=None,
-        left=None,
-        right=None
-    ):
+    def __init__(self, data=None, left=None, right=None):
         self.data = data
         self.set_left(left)
         self.set_right(right)
