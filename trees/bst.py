@@ -26,7 +26,7 @@ class Bst(Node):
         poperty.
         """
 
-        it = iter(seq)
+        it = iter(seq) # TODO: Catch TypeError?
         root = cls(next(it))
         for elem in it:
             root.insert(cls(elem))

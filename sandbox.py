@@ -10,9 +10,11 @@ from trees.binary_tree import Node
 from trees.util import *
 from trees.bst import Bst
 
-tree = Bst("F", Bst("B", Bst("A"), Bst("D", Bst("C"), Bst("E"))), Bst("G", Bst("I", left=Bst("H"))))
-bfs(tree, lambda n: print(n.data, end=' '))
-print(issorted(tree)) 
+print(isinstance(Bst, Node))
+
+# tree = Bst("F", Bst("B", Bst("A"), Bst("D", Bst("C"), Bst("E"))), Bst("G", Bst("I", left=Bst("H"))))
+# bfs(tree, lambda n: print(n.data, end=' '))
+# print(issorted(tree))
 
 
 # l = [i for i in range(-10, 10)]
