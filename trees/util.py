@@ -3,6 +3,7 @@
     Module: Trees.Util -- Defines utility methods for binary trees.
 
     Methods:
+        * issorted       -- Return True if the tree is sorted (is a BST).
         * bfs            -- Execute a breadth-first (level-order) traversal on a tree.
         * preorder_dfs   -- Execute a pre-order depth-first traversal on a tree.
         * in_order_dfs   -- Execute an in-order depth-first traversal on a tree.
@@ -17,6 +18,25 @@
 """
 
 from trees.binary_tree import Node
+from operator import gt
+
+def issorted(t, key=gt):
+    """Return True if tree t satisfies the binary search property, i.e. for all nodes n in the
+    tree, all data contained in the left sub-tree of node n is less or equal to the data of node n,
+    and all data contained in the right subtree is greater or equal to the data contained in n. The
+    comparison key defaults to the greater than operator, a custom sorting key can be supplied.
+    """
+
+    def check_children(acc, n):
+        """Return True if the immediate children of a node satisfy the binary search property."""
+        l, r = n.left, n.right
+        if l:
+            acc &= l.data <= n.data
+        if r:
+            acc &= r.data >= n.data
+        return acc
+
+    return fold(t, True, check_children)
 
 def bfs(n: Node, process=None):
     """Execute an iterative breadth-first (level-order) traversal on a binary tree starting from
@@ -97,7 +117,10 @@ def fold(n, acc, op):
         return acc
 
 def find(target, root):
-    """Find and return the first node equivalent to node n in tree rooted at root. Return None if target is not in root."""
+    """Find and return the first node equivalent to node n in tree rooted at root. Return None if
+    target is not in root.
+    """
+
     assert isinstance(root, Node), "Argument root must be of type Node."
     assert isinstance(root, Node), "Argument target must be of type Node."
     return fold(root, None, lambda acc, n: n if n == target else acc)
@@ -120,6 +143,9 @@ def depth(n, root):
         return -1
 
 def max_depth(t):
-    """Return the maximum depth of tree t, i.e. the depth of the node with the greatest depth relative to node t."""
+    """Return the maximum depth of tree t, i.e. the depth of the node with the greatest depth
+    relative to node t.
+    """
+
     assert isinstance(t, Node), "Argument must be of type Node."
     return fold(t, 0, lambda acc, n: max(acc, depth(n, t)))

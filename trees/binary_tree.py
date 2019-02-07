@@ -18,8 +18,8 @@ class Node():
 
     def __init__(
         self,
-        left=None,
         data=None,
+        left=None,
         right=None
     ):
         self.data = data
@@ -74,7 +74,7 @@ class Node():
         assert isinstance(r, Node) or r is None, "Child node must be of type Node or None, instead has type {}".format(type(r))
 
         self.right = r
-        if r: r.set_parent(self) # Do not set the parent of NonTypes
+        if r: r.set_parent(self) # Do not set the parent of NoneTypes
 
     def set_left(self, l):
         """Add the node's left child, overridding any existing left child and ensuring the left child is of type Node.
@@ -83,7 +83,7 @@ class Node():
         assert isinstance(l, Node) or l is None, "Child node must be of type Node or None, instead has type {}".format(type(l))
 
         self.left = l
-        if l: l.set_parent(self) # Do not set the parent of NonTypes
+        if l: l.set_parent(self) # Do not set the parent of NoneTypes
 
     def size(self):
         """Return the number of nodes in the tree starting at root (self)."""

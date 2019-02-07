@@ -18,22 +18,24 @@ class Bst(Node):
 
     def __init__(
         self,
-        left=None,
         data=None,
+        left=None,
         right=None
     ):
-        super().__init__(left, data, right)
+        super().__init__(data, left, right)
 
     @classmethod
     def from_list(cls, seq):
-        """Factory method to create a BST from a sequence by constructing a new BST and calling insert on the BST for
-        each element in the sequence, which will maintain the binary search poperty.
+        """Factory method to create a BST from a sequence by constructing a new BST and calling
+        insert on the BST for each element in the sequence, which will maintain the binary search
+        poperty.
         """
 
-        # TODO: make this a class or static method so it returns a new BST
-        for elem in seq:
-            cls.
-
+        it = iter(seq)
+        root = cls(next(it))
+        for elem in it:
+            root.insert(cls(elem))
+        return root
 
     def insert(self, n):
         """Insert a node into the BST at a location that will maintain the binary search property
@@ -46,7 +48,6 @@ class Bst(Node):
             * rewrite with one null check on self, i.e. single recursive base case. Will allow calling insert on empty node.
         """
 
-        # inserting assuming n is a node
         if n.data > self.data:
             if self.right:
                 self.right.insert(n)

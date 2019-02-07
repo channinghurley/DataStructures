@@ -7,27 +7,31 @@ from time import time
 # from Trees.Util import *
 # from Lists.Util import fold as list_fold
 from trees.binary_tree import Node
-from trees.util import bfs, in_order_dfs
-from trees.binary_search_tree import Bst
+from trees.util import bfs, in_order_dfs, issorted
+from trees.bst import Bst
 
-# test = Node(data=1, left=Node(data=1))
 # tree = Node(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
+
+t = Bst.from_list([i for i in range(-10, 10)])
+
+
+
+# t2 = Bst.from_list([i for i in range(-3, 4)])
+# print(t2)
+# in_order_dfs(t2, lambda n: print(n.data, end=' '))
+# print("\n", t2.data, "\n")
 #
-# tree2 = Node(Node(Node(data=4), 2, Node(data=5)), 1, Node(Node(data=6), 3, Node(data=7)))
+# t3 = Bst.from_list([i for i in reversed(range(-3, 4))])
+# in_order_dfs(t2, lambda n: print(n.data, end=' '))
+# # t3.set_right(Bst(1))
+# print(t3)
+# print(issorted(t3))
 
-t = Bst(data=1)
-t.insert(Bst(data=2))
-t.insert(Bst(data=-1))
-t.insert(Bst(data=3))
+l = [-i if i % 2 else i for i in range(10)]
+print(l)
+t = Bst.from_list(l)
 print(t)
-
-
-# tree = Bst(Node(Node(data="A"), "B", Node(Node(data="C"), "D", Node(data="E"))), "F", Node(None, "G", Node(Node(data="H"), "I")))
-
-# in_order_dfs(tree, lambda n: print(n.data))
-
-
-
+in_order_dfs(t, lambda n: print(n.data, end=' '))
 
 # def timed(f):
 #     """Decorator to time function calls."""
