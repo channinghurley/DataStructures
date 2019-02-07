@@ -27,13 +27,12 @@ def issorted(t, key=gt):
     comparison key defaults to the greater than operator, a custom sorting key can be supplied.
     """
 
-    def check_children(acc, n): # FIXME
-        """Return True if the immediate children of a node satisfy the binary search property."""
-        l, r = n.left, n.right
-        if l:
-            acc &= l.data <= n.data
-        if r:
-            acc &= r.data >= n.data
+    def check_children(acc, n):
+        """Helper return True iff the immediate children n satisfy the binary search property."""
+        if n.left:
+            acc &= n.left.data <= n.data
+        if n.right:
+            acc &= n.right.data >= n.data
         return acc
 
     return fold(t, True, check_children)
@@ -121,16 +120,16 @@ def find(target, root):
     target is not in root.
     """
 
-    assert isinstance(root, Node), "Argument root must be of type Node."
-    assert isinstance(root, Node), "Argument target must be of type Node."
+    assert isinstance(root, Node), "Argument root must be of type Node, instead has type {}".format(type(root))
+    assert isinstance(target, Node), "Argument target must be of type Node, instead has type {}".format(type(target))
     return fold(root, None, lambda acc, n: n if n == target else acc)
 
 def depth(n, root):
     """Return the depth of node n relative to node root, where depth is the number of edges that must be traversed to get from one node to another. If node n is not in the tree rooted at node root, return -1.
     """
 
-    assert isinstance(n, Node), "Argument n must be of type Node."
-    assert isinstance(root, Node), "Argument root must be of Type Node."
+    assert isinstance(n, Node), "Argument n must be of type Node, instead has type {}".format(type(n))
+    assert isinstance(root, Node), "Argument root must be of Type Node, instead has type {}".format(type(root))
 
     n = find(n, root) # point n to the equivalent node within the tree
 

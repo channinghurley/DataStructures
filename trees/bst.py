@@ -20,13 +20,13 @@ class Bst(Node):
         super().__init__(data, left, right)
 
     @classmethod
-    def from_list(cls, seq):
-        """Factory method to create a BST from a sequence by constructing a new BST and calling
-        insert on the BST for each element in the sequence, which will maintain the binary search
-        poperty.
+    def from_list(cls, it):
+        """Factory method to create a BST from a iterable by constructing a new BST and calling
+        insert on the BST for each element in the iterable, which will maintain the binary search
+        poperty. Will throw TypeError if it is not an iterable.
         """
 
-        it = iter(seq) # TODO: Catch TypeError?
+        it = iter(it)
         root = cls(next(it))
         for elem in it:
             root.insert(cls(elem))

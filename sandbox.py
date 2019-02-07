@@ -10,8 +10,6 @@ from trees.binary_tree import Node
 from trees.util import *
 from trees.bst import Bst
 
-print(isinstance(Bst, Node))
-
 # tree = Bst("F", Bst("B", Bst("A"), Bst("D", Bst("C"), Bst("E"))), Bst("G", Bst("I", left=Bst("H"))))
 # bfs(tree, lambda n: print(n.data, end=' '))
 # print(issorted(tree))
@@ -20,15 +18,25 @@ print(isinstance(Bst, Node))
 # l = [i for i in range(-10, 10)]
 # print(len(l))
 # t = Bst.from_list(l)
-# bfs(t, lambda n: print(n.data, end=' '))
-# print("\n", depth(find(Node(9), t), t))
+# t = Bst(1, Bst(3), Bst(2))
+# print(t)
+# # postorder_dfs(t, lambda n: print(n.data, end=' '))
+# print("\n", depth(Node(3), t))
+# print(issorted(t))
+# t.set_left(None)
+# print(t)
+# print(issorted(t))
 
 
 
 # t2 = Bst.from_list([i for i in range(-3, 4)])
 # print(t2)
 # in_order_dfs(t2, lambda n: print(n.data, end=' '))
-# print("\n", t2.data, "\n")
+# print(issorted(t2))
+# t2.set_parent(Node(1))
+# t2.parent.set_right(t2)
+# print(t2.parent)
+# print(issorted(t2.parent))
 #
 # t3 = Bst.from_list([i for i in reversed(range(-3, 4))])
 # in_order_dfs(t2, lambda n: print(n.data, end=' '))
