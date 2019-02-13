@@ -10,6 +10,14 @@ from trees.binary_tree import Node
 from trees.util import *
 from trees.bst import Bst
 
+t = Bst.from_list([2, 1, 3, 4, 2.5, 2.6])
+
+print(t)
+
+# t2 = Node(2, Node(1, None, None), Node(3, Node(2.5, None, Node(2.6, None, None)), Node(4, None, None)))
+#
+# print(t == t2)
+
 # tree = Bst("F", Bst("B", Bst("A"), Bst("D", Bst("C"), Bst("E"))), Bst("G", Bst("I", left=Bst("H"))))
 # bfs(tree, lambda n: print(n.data, end=' '))
 # print(issorted(tree))

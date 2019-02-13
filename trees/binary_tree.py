@@ -13,7 +13,7 @@
 """
 
 
-class Node():
+class Node:
     """A node in a binary tree consisting of data, a left child, a right child, and an optional parent node. The children and parent are themselves instances of the Node class (if they exist) For added functionality, use the Trees.Util methods.
     """
 
@@ -23,8 +23,9 @@ class Node():
         self.set_right(right)
         self.set_parent(None)
 
-    def __str__(self):
-        return "Node({}, {}, {})".format(self.left, self.data, self.right)
+    def __repr__(self):
+        # return "hi"
+        return "Node({}, {}, {})".format(self.data, self.left, self.right)
 
     def __bool__(self):
         """Return False iff the node is empty, i.e. has no data and no children."""
